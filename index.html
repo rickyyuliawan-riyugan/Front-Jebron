@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx" prefix="og: http://ogp.me/ns#">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    
+        <title>Few-shot Learning Example</title>
+        <meta name="description" content="Few-shot Learning Example">    
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/style.css" />
+    
+    </head>
+    
+    <body>
+        <main>
+            <section id="home">
+                <div class="home-title">
+                    <h1>Few-shot Learning Example</h1>
+                </div>
+                <div class="fewshot-preform">
+                    <div class="fewshot-form-dropdown">
+                        <label for="task1">Task:</label>
+                        <select name="task1" id="task1" onchange="getTask(event)">
+                            <option value="smsa">SMSA</option>
+                            <option value="emot">Emot</option>
+                            <option value="wrete">Wrete</option>
+                        </select>
+                    </div>
+                    <div class="fewshot-form-dropdown">
+                        <label for="model1">Model Name:</label>
+                        <select name="model1" id="model1" onchange="getModel(event)">
+                            <option value="xglm">XGLM</option>
+                            <option value="xlmr">XLMR</option>
+                        </select>
+                    </div>
+                    <div class="fewshot-form-dropdown">
+                        <label for="method1">Method:</label>
+                        <select name="method1" id="method1" onchange="getMethod(event)">
+                            <option value="icl">ICL</option>
+                            <option value="ft">FT</option>
+                            <option value="lmbff">LMBFF</option>
+                        </select>
+                    </div>
+                </div>
+                <form id="fewshotform-smsa" action="#" method="post" style="display:block;">
+                    <div class="fewshot-form-input-card">
+                        <input type="hidden" name="task" id="task-smsa" value="smsa">
+                        <input type="hidden" name="model" id="model-smsa" value="xglm">
+                        <input type="hidden" name="method" id="method-smsa" value="icl">
+                        <div class="fewshot-context-label">
+                            <label for="example">Example Text:</label>
+                            <label for="label">Label:</label>
+                        </div>
+                        <div class="fewshot-smsa-input-container">
+                            <div class="fewshot-context-input">
+                                <input type="text" name="example">
+                                <select name="label">
+                                    <option value="positif">Positif</option>
+                                    <option value="negatif">Negatif</option>
+                                    <option value="netral">Netral</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="add-smsa-input">+</button>
+                        <div class="fewshot-predict-input">
+                            <input type="text" name="inputtext">
+                            <button id="predictbutton" type="submit" value="submit">Predict</button>
+                        </div>
+                    </div>
+                </form>
+                <form id="fewshotform-emot" action="#" method="post" style="display:none;">
+                    <div class="fewshot-form-input-card">
+                        <input type="hidden" name="task" id="task-emot" value="smsa">
+                        <input type="hidden" name="model" id="model-emot" value="xglm">
+                        <input type="hidden" name="method" id="method-emot" value="icl">
+                        <div class="fewshot-context-label">
+                            <label for="example">Example Text:</label>
+                            <label for="label">Label:</label>
+                        </div>
+                        <div class="fewshot-emot-input-container">
+                            <div class="fewshot-context-input">
+                                <input type="text" name="example">
+                                <select name="label">
+                                    <option value="marah">Marah</option>
+                                    <option value="senang">Senang</option>
+                                    <option value="sedih">Sedih</option>
+                                    <option value="takut">Takut</option>
+                                    <option value="cinta">Cinta</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="add-emot-input">+</button>
+                        <div class="fewshot-predict-input">
+                            <input type="text" name="inputtext">
+                            <button id="predictbutton" type="submit" value="submit">Predict</button>
+                        </div>
+                    </div>
+                </form>
+                <form id="fewshotform-wrete" action="#" method="post" style="display:none;">
+                    <div class="fewshot-form-input-card">
+                        <input type="hidden" name="task" id="task-wrete" value="smsa">
+                        <input type="hidden" name="model" id="model-wrete" value="xglm">
+                        <input type="hidden" name="method" id="method-wrete" value="icl">
+                        <div class="fewshot-context-label">
+                            <label for="example">Example Text:</label>
+                            <label for="label">Label:</label>
+                        </div>
+                        <div class="fewshot-wrete-input-container">
+                            <div class="fewshot-context-input">
+                                <input type="text" name="example">
+                                <select name="label">
+                                    <option value="benar">Benar</option>
+                                    <option value="salah">Salah</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="add-wrete-input">+</button>
+                        <div class="fewshot-predict-input">
+                            <input type="text" name="inputtext">
+                            <button id="predictbutton" type="submit" value="submit">Predict</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="fewshot-result">
+                    <div class="predicted-result">
+                        <p></p>
+                    </div>
+                    <div class="predicted-score">
+                        <p></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        function getTask(e) {
+            document.getElementById("task-smsa").value = e.target.value;
+            document.getElementById("task-emot").value = e.target.value;
+            document.getElementById("task-wrete").value = e.target.value;
+
+            if(e.target.value == "emot") {
+                document.getElementById('fewshotform-smsa').style.display = "none";
+                document.getElementById('fewshotform-emot').style.display = "block";
+                document.getElementById('fewshotform-wrete').style.display = "none";
+            } else if (e.target.value == "wrete") {
+                document.getElementById('fewshotform-smsa').style.display = "none";
+                document.getElementById('fewshotform-emot').style.display = "none";
+                document.getElementById('fewshotform-wrete').style.display = "block";
+            } else {
+                document.getElementById('fewshotform-smsa').style.display = "block";
+                document.getElementById('fewshotform-emot').style.display = "none";
+                document.getElementById('fewshotform-wrete').style.display = "none";
+            }
+        }
+
+        function getModel(e) {
+            document.getElementById("model-smsa").value = e.target.value;
+            document.getElementById("model-emot").value = e.target.value;
+            document.getElementById("model-wrete").value = e.target.value;
+        }
+
+        function getMethod(e) {
+            document.getElementById("method-smsa").value = e.target.value;
+            document.getElementById("method-emot").value = e.target.value;
+            document.getElementById("method-wrete").value = e.target.value;
+        }
+    </script>
+    <script>
+        function smsaHandleFormSubmit(event) {
+            event.preventDefault();
+
+            const data = new FormData(event.target);
+
+            const formJSON = Object.fromEntries(data.entries());
+
+            formJSON.example = data.getAll('example');
+            formJSON.label = data.getAll('label');
+
+            var jsonResults = {"predicted_label" : "negatif","confidence_scores" : [{"label" : "netral","confidence_score" : 0.31},{"label" : "positif","confidence_score" : 0.2},{"label": "negatif","confidence_score" :0.6}],};
+
+            const predlabel = document.querySelector('.predicted-result p');
+            predlabel.innerText = "Predicted Label: " + jsonResults.predicted_label;
+            const confscore = document.querySelector('.predicted-score p');
+            confscore.innerText = JSON.stringify(jsonResults.confidence_scores);
+        }
+
+        const smsaform = document.querySelector('#fewshotform-smsa');
+        smsaform.addEventListener('submit', smsaHandleFormSubmit);
+
+        function emotHandleFormSubmit(event) {
+            event.preventDefault();
+
+            const data = new FormData(event.target);
+
+            const formJSON = Object.fromEntries(data.entries());
+
+            formJSON.example = data.getAll('example');
+            formJSON.label = data.getAll('label');
+
+            var jsonResults = {"predicted_label" : "negatif","confidence_scores" : [{"label" : "netral","confidence_score" : 0.31},{"label" : "positif","confidence_score" : 0.2},{"label": "negatif","confidence_score" :0.6}],};
+
+            const predlabel = document.querySelector('.predicted-result p');
+            predlabel.innerText = "Predicted Label: " + jsonResults.predicted_label;
+            const confscore = document.querySelector('.predicted-score p');
+            confscore.innerText = JSON.stringify(jsonResults.confidence_scores);
+        }
+
+        const emotform = document.querySelector('#fewshotform-emot');
+        emotform.addEventListener('submit', emotHandleFormSubmit);
+
+        function wreteHandleFormSubmit(event) {
+            event.preventDefault();
+
+            const data = new FormData(event.target);
+
+            const formJSON = Object.fromEntries(data.entries());
+
+            formJSON.example = data.getAll('example');
+            formJSON.label = data.getAll('label');
+
+            var jsonResults = {"predicted_label" : "negatif","confidence_scores" : [{"label" : "netral","confidence_score" : 0.31},{"label" : "positif","confidence_score" : 0.2},{"label": "negatif","confidence_score" :0.6}],};
+
+            const predlabel = document.querySelector('.predicted-result p');
+            predlabel.innerText = "Predicted Label: " + jsonResults.predicted_label;
+            const confscore = document.querySelector('.predicted-score p');
+            confscore.innerText = JSON.stringify(jsonResults.confidence_scores);
+        }
+
+        const wreteform = document.querySelector('#fewshotform-wrete');
+        wreteform.addEventListener('submit', wreteHandleFormSubmit);
+    </script>
+
+</html>

@@ -1,0 +1,246 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url("../fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url("../fonts/Poppins-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url("../fonts/Poppins-Bold.ttf") format("truetype");
+}
+
+html {
+    background-color: #FFF;
+}
+
+body {
+    font-family: "Poppins-Regular", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    color: #333333;
+    overflow-x: hidden;
+    font-size: 15px;
+}
+
+h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    line-height: 30px;
+}
+  
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.home-title {
+    border: 3px solid #2196f3;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 0 0 50px;
+}
+
+.home-title h1 {
+    font-family: "Poppins-Bold", Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    line-height: 48px;
+    color: #2196f3;
+    text-align: center;
+}
+
+.fewshot-preform {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fewshot-form-dropdown {
+    width: 300px;
+}
+
+.fewshot-form-dropdown label {
+    display: block;
+    font-family: "Poppins-Medium", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 26px;
+    text-align: center;
+    margin: 0 0 10px;
+}
+
+.fewshot-form-dropdown select {
+    display: block;
+    width: 300px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 16px;
+    padding: 10px;
+    background-color: #fff;
+    border: 2px solid #2196f3;
+    border-radius: 4px;
+}
+
+.fewshot-form-input-card {
+    width: 1000px;
+    border: 3px solid #2196f3;
+    margin: 30px 0;
+    padding: 24px;
+}
+
+.fewshot-context-label {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 10px;
+}
+
+.fewshot-context-label label {
+    display: block;
+    font-family: "Poppins-Medium", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.fewshot-context-label label[for="example"] {
+    width: 720px;
+}
+
+.fewshot-context-label label[for="label"] {
+    width: 200px;
+}
+
+.fewshot-context-input {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 10px;
+}
+
+.fewshot-context-input input {
+    display: block;
+    width: 720px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 16px;
+    padding: 10px;
+    background-color: #fff;
+    border: 2px solid #2196f3;
+    border-radius: 4px;
+}
+
+.fewshot-context-input select {
+    display: block;
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 16px;
+    padding: 10px;
+    background-color: #fff;
+    border: 2px solid #2196f3;
+    border-radius: 4px;
+}
+
+.add-smsa-input {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    color: #2196f3;
+    font-size: 50px;
+    line-height: 1;
+    margin-left: 825px;
+}
+
+.add-emot-input {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    color: #2196f3;
+    font-size: 50px;
+    line-height: 1;
+    margin-left: 825px;
+}
+
+.add-wrete-input {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    color: #2196f3;
+    font-size: 50px;
+    line-height: 1;
+    margin-left: 825px;
+}
+
+.fewshot-predict-input {
+    display: flex;
+    justify-content: space-between;
+    margin: 100px 0 0;
+}
+
+.fewshot-predict-input input {
+    display: block;
+    width: 760px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 16px;
+    padding: 10px;
+    background-color: #fff;
+    border: 2px solid #2196f3;
+    border-radius: 4px;
+}
+
+.fewshot-predict-input button {
+    display: block;
+    width: 160px;
+    height: 40px;
+    font-family: "Poppins-Medium", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 40px;
+    color: #fff;
+    background-color: #2196f3;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+    border-radius: 4px;
+}
+
+.predicted-result {
+    border: 3px solid #2196f3;
+    padding: 10px;
+    margin: 0 0 15px;
+}
+
+.predicted-result p {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+}
+
+.predicted-score {
+    border: 3px solid #2196f3;
+    padding: 10px;
+    margin: 0;
+}
+
+.predicted-score p {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+}
